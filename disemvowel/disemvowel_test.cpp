@@ -47,18 +47,20 @@ TEST(Disemvowel, HandleLongString) {
   size = 50000;
   str = (char*) calloc(size, sizeof(char));
   
-  char const* dis = disemvowel(str);
+  
   str[0] = 'x';
   str[1] = 'y';
   str[2] = 'z';
+  
   for (i = 3; i < size-1; ++i) {
     str[i] = 'a';
   }
   str[size-1] = '\0';
-  
+  char const* dis = disemvowel(str);
   ASSERT_STREQ("xyz", dis);
-  free((void*) str);
   free((void*) dis);
+  free((void*) str);
+  
 }
 
 int main(int argc, char *argv[]) {
